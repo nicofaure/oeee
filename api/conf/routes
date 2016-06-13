@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                               controllers.Application.index()
+POST    /events                         @controllers.SuccessEventController.addEvent()
+GET     /events                         @controllers.SuccessEventController.addEvents()
+GET     /events/:name                   @controllers.SuccessEventController.getEvents(name:String, dateFrom:String, dateTo:String)
+GET     /events/:name/stopped           @controllers.SuccessEventController.findStoppedEvents(name:String, dateFrom:Long, dateTo:Long)
+
+POST    /failevents                     @controllers.FailEventController.addEvent()
+GET     /failevents                     @controllers.FailEventController.addEvents()
+GET     /failevents/:name               @controllers.FailEventController.getEvents(name:String, dateFrom:String, dateTo:String)
+GET     /failevents/:name/pareto        @controllers.FailEventController.pareto(name:String, dateFrom:Long, dateTo:Long)
+
+GET     /users/:userid                  @controllers.UserController.findUser(userid:String)
+POST    /users                          @controllers.UserController.create()
+POST    /goodparts                      @controllers.GoodPartsCounterController.addEvent()
+POST    /badparts                       @controllers.BadPartsCounterController.addEvent()
+
